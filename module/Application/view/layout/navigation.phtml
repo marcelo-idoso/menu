@@ -1,0 +1,32 @@
+<?php
+foreach ($this->container as $page):
+    $sub = $page->getPages();
+    $aAttribs = '';
+    $liClasses = array();
+    $liClass = '';
+    if ($page->isActive(true))
+        $liClasses[] = 'active treeview';
+    if (count($sub) > 0):
+        $liClasses[] = '';
+        $aAttribs = ' class=""';
+    endif;
+    if (count($liClasses) > 0)
+        $liClass = ' class="' . implode(' ', $liClasses) . '"';
+    $tamSub = count($sub);
+    $caret = $tamSub > 0 ? '<i class="fa fa-angle-left pull-right"></i>' : '';
+    $href = $tamSub > 0 ? 'javascript:void(0)' : $this->url($page->getRoute(), array('action' => $page->getAction()));
+    echo '<li' . $liClass . '><a href="' . $href . '"' . $aAttribs . '><i class="fa fa-dashboard"></i><span>' . $page->getlabel() .  '</span>' . $caret . '</a>';
+    if ($tamSub > 0):
+        echo '<ul class="treeview-menu">';
+        foreach ($sub as $pages):
+            $active = $pages->isActive() ? ' class="active"' : '';
+            echo '<li' . $active . '><a href="' . $this->url($pages->getRoute(), array('action' => $pages->getAction())) . '"><i class="fa fa-circle-o"></i>' . $pages->getlabel() . '</a></li>';
+        endforeach;
+        echo '</ul></li>';
+    else:
+        echo '</li>';
+    endif;
+    echo '<li class="divider-vertical"></li>';
+    unset($aAttribs, $liClass, $liClasses, $tamSub, $caret);
+endforeach;
+

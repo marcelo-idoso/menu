@@ -12,5 +12,30 @@
  */
 
 return array(
-    // ...
+    'navigation' => array(
+        'default' => array( 
+            array(
+                'label' => 'Teste',
+                'route' => 'home' ,
+                'pages' => array(
+                    array(
+                        'label' => 'java Nº 1',
+                        'route' => 'home',
+                        'pages' => array(
+                            array(
+                                'label' => 'java Nº2',
+                                'route' => 'home',
+                            ),
+                        ),
+                    ),
+                    array(
+                        'label' => 'GAme',
+                        'route' => 'application'
+                    ),
+                ),
+            ),
+            
+        ),
+    ),
+    
 );
