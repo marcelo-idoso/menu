@@ -12,10 +12,22 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class IndexController extends AbstractActionController
-{
-    public function indexAction()
-    {
+class ChartsController extends AbstractActionController {
+    
+    public function chartjsAction() {
         return new ViewModel();
-    }     
+    }
+    
+    public function morrisAction() {
+        return new ViewModel();
+    } 
+    
+    public function flotAction() {
+        return new ViewModel();
+    } 
+    
+    public function inlinechatAction() {
+        return new ViewModel();
+    } 
+    
 }
